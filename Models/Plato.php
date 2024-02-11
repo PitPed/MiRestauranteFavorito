@@ -36,6 +36,7 @@ class Plato
                 <input type="text" name="cantidad" class="quantity-text"
                     value='<?php echo isset($_SESSION['cart'][$this->name]) ? $_SESSION['cart'][$this->name]['quantity'] : 0; ?>'>
                 <input type="submit" value="+" name='add'>
+                <input type="submit" value="Guardar" name='mod'>
             </form>
         </div>
     <?php }

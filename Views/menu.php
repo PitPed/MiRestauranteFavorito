@@ -30,11 +30,15 @@ foreach ($platosArray as $plato) {
 
 $totalPlatos = $connection->query('SELECT COUNT(*) as "totalPlatos" FROM platos')->fetch(PDO::FETCH_ASSOC)['totalPlatos'];
 
-if (isset($_POST['add'])) {
+if (isset($_POST['add']) || isset($_POST['mod'])) {
     if (!isset($_SESSION['cart'][$_POST['name']])) {
         $_SESSION['cart'][$_POST['name']] = array('plato' => $platos[$_POST['name']], 'quantity' => 0);
     }
-    $_SESSION['cart'][$_POST['name']]['quantity']++;
+    if (isset($_POST['add'])) {
+        $_SESSION['cart'][$_POST['name']]['quantity']++;
+    } else if (isset($_POST['mod'])) {
+        $_SESSION['cart'][$_POST['name']]['quantity'] = $_POST['cantidad'];
+    }
 } else if (isset($_POST['substract']) && isset($_SESSION['cart'][$_POST['name']]) && $_SESSION['cart'][$_POST['name']]['quantity'] > 0) {
     $_SESSION['cart'][$_POST['name']]['quantity']--;
 } else if (isset($_POST['del'])) {
