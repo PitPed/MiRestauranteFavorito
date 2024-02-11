@@ -37,7 +37,7 @@ if (isset($_POST['add']) || isset($_POST['mod'])) {
     if (isset($_POST['add'])) {
         $_SESSION['cart'][$_POST['name']]['quantity']++;
     } else if (isset($_POST['mod'])) {
-        $_SESSION['cart'][$_POST['name']]['quantity'] = $_POST['cantidad'];
+        $_SESSION['cart'][$_POST['name']]['quantity'] = $_POST['cantidad'] > 0 ? $_POST['cantidad'] : 0;
     }
 } else if (isset($_POST['substract']) && isset($_SESSION['cart'][$_POST['name']]) && $_SESSION['cart'][$_POST['name']]['quantity'] > 0) {
     $_SESSION['cart'][$_POST['name']]['quantity']--;
