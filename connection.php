@@ -1,7 +1,7 @@
 <?php
 $dbData = array(
     'server' => 'localhost',
-    'port' => '3333',
+    'port' => '3306',
     'name' => 'MRF',
     'user' => 'root',
     'password' => '',
